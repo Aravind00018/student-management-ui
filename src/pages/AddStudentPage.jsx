@@ -12,7 +12,7 @@ function AddStudentPage() {
   function handleSubmit() {
     if (!name || !email || !age) { setError('All fields are required'); return; }
     addStudent({ name, email, age: parseInt(age) })
-      .then(() => navigate('/'))
+      .then(() => navigate('/', { state: { successMessage: 'Student added successfully!' } }))
       .catch((err) => {
         const msg = err.response?.data;
         setError(typeof msg === 'object' ? Object.values(msg).join(', ') : 'Failed to add student');

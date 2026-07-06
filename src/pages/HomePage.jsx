@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import StudentCard from '../StudentCard';
 import { getAllStudents, deleteStudent } from '../studentApi';
 
@@ -7,13 +7,20 @@ function HomePage() {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const successMessage = location.state?.successMessage;
 
   useEffect(() => { fetchStudents(); }, []);
 
   function fetchStudents() {
     setLoading(true);
     getAllStudents()
-      .then((res) => { setStudents(res.data.content); setLoading(false); })
+      .then((res) => {
+        const data = res.data;
+        const list = Array.isArray(data) ? data : data?.content || [];
+        setStudents(list);
+        setLoading(false);
+      })
       .catch(() => setLoading(false));
   }
 
@@ -32,6 +39,12 @@ function HomePage() {
             + Add Student
           </button>
         </div>
+
+        {successMessage && (
+          <div className="mb-4 rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+            {successMessage}
+          </div>
+        )}
 
         {loading ? (
           <p className="text-center text-gray-500 mt-8">Loading students...</p>
