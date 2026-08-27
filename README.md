@@ -29,20 +29,18 @@ React frontend with authentication, connected to Spring Boot REST API.
 ## Backend Repo
 https://github.com/Aravind00018/student-management-api
 
-## 🚀 Production Deployment & Architecture
+# Student Management System - Frontend
 
-The backend REST API is deployed on AWS infrastructure with secure HTTPS routing.
+A modern, responsive web application built with React and Vite for managing student records and blog posts with JWT-based authentication.
 
-- **Backend API:** AWS EC2 (`t2.micro`, Amazon Linux 2023)
-- **Database:** AWS RDS MySQL (`db.t3.micro`)
-- **HTTPS Tunnel:** Cloudflare Quick Tunnel (`cloudflared`)
-- **Frontend App:** Hosted on Vercel
-- **Authentication:** Stateless JWT Security Architecture
+## 🌐 Live Demo & Deployment
 
-### System Architecture Workflow
-`React UI (Vercel)` ➔ `Cloudflare HTTPS` ➔ `Spring Boot REST API (EC2)` ➔ `MySQL Database (RDS)`
+- **Live Application:** [https://student-management-hxb0v79wn-hustler17.vercel.app](https://student-management-hxb0v79wn-hustler17.vercel.app)
+- **Deployment Platform:** Vercel
 
-### Backend Tech Stack
-- Java 17, Spring Boot, Spring Security (JWT)
-- Spring Data JPA (Hibernate), MySQL
-- Docker, Maven, AWS EC2, AWS RDS
+## 🛠️ Tech Stack
+- React.js (Vite)
+- JavaScript (ES6+)
+- Axios (API Integration)
+- HTML5 & CSS3
+- JWT Session Storage
